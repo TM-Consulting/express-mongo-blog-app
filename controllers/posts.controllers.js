@@ -1,4 +1,4 @@
-const service = require("../services/messages.services");
+const service = require("../services/posts.services");
 
 const create = async (request, response) => {
   const data = await service.insert(request.body);

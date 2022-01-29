@@ -2,7 +2,7 @@ const { ObjectId } = require("mongodb");
 const mongoService = require("../utils/mongoRequests");
 
 const { create, getOneById, getByFilters, remove, update } =
-  mongoService("messages");
+  mongoService("posts");
 const insert = async (newObject) => {
   try {
     const data = await create(newObject);
