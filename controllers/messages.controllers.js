@@ -1,13 +1,36 @@
 const messagesService = require("../services/messages.services");
 
-const createMessage = (request, response) => {
-  response.send(messagesService.createMessage(request.body));
+const createMessage = async (request, response) => {
+  const data = await messagesService.createMessage(request.body);
+  response.send(data);
 };
-const getMessage = (request, response) => {
-  response.send(messagesService.getMessage(request.params.msgId));
-};
-const filterMessages = (request, response) => {
-  response.send(messagesService.filterMessages(request.query));
+const getMessage = async (request, response) => {
+  const data = await messagesService.getMessage(request.params.msgId);
+  response.send(data);
 };
 
-module.exports = { createMessage, getMessage, filterMessages };
+const deleteMessage = async (request, response) => {
+  const data = await messagesService.deleteMessage(request.params.msgId);
+  response.send(data);
+};
+
+const filterMessages = async (request, response) => {
+  const data = await messagesService.filterMessages(request.query);
+
+  response.send(data);
+};
+const updateMessage = async (request, response) => {
+  const data = await messagesService.updateMessage(
+    request.params.msgId,
+    request.body
+  );
+
+  response.send(data);
+};
+module.exports = {
+  createMessage,
+  getMessage,
+  deleteMessage,
+  filterMessages,
+  updateMessage,
+};
