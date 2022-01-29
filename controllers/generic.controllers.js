@@ -1,5 +1,5 @@
-const controller = (serviceName) => {
-  const service = require(`../services/${serviceName}.services`);
+const controller = (collectionName) => {
+  const service = require(`../services/generic.services`)(collectionName);
   const create = async (request, response) => {
     const data = await service.insert(request.body);
     response.send(data);
